@@ -1,0 +1,25 @@
+title: 学习JHipster
+description: 
+
+future: true
+whitelist:
+  - jekyll-asciidoc
+
+plugins:
+  - jekyll-paginate
+  - jekyll-asciidoc
+  - jekyll-sitemap
+exclude:
+  - LICENSE.adoc
+  - README.adoc
+  - Gemfile
+  - Gemfile.lock
+  - Rakefile
+asciidoc: {}
+asciidoctor:
+  base_dir: :docdir
+  safe: unsafe
+  attributes:
+    - idseparator=_
+    - source-highlighter=coderay
+    - icons=font
