@@ -1,0 +1,1056 @@
+<!doctype html>
+<!--[if IE 9]>
+<html class="lt-ie10" lang="en"> <![endif]-->
+<html class="no-js" lang="en" data-useragent="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started with JHipster 6</title>
+    <meta name="description" content="">
+    <meta name="author" content="Your name goes here">
+    <meta name="copyright" content="Maybe consider a Creative Commons license">
+    <link rel="stylesheet" href="/css/foundation.css">
+    <link rel="stylesheet" href="/css/font-awesome.css">
+    <link rel="stylesheet" href="/css/coderay.css">
+    <link rel="stylesheet" href="/css/asciidoctor.css">
+    <script src="/js/vendor/modernizr.js"></script>
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/toc.js"></script>
+</head>
+<body>
+
+
+<!-- Nav Bar -->
+
+<nav class="top-bar" data-topbar>
+    <ul class="title-area">
+        <!-- Title Area -->
+        <li class="name">
+            <h1>
+                <a href="/">学习JHipster</a>
+            </h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns" role="content">
+
+        <div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#what_is_jhipster">What is JHipster?</a></li>
+<li><a href="#install_jhipster_6">Install JHipster 6</a></li>
+<li><a href="#create_a_project">Create a Project</a></li>
+<li><a href="#generate_entities">Generate Entities</a></li>
+<li><a href="#add_business_logic">Add Business Logic</a></li>
+<li><a href="#make_ui_enhancements">Make UI Enhancements</a>
+<ul class="sectlevel2">
+<li><a href="#allow_html">Allow HTML</a></li>
+<li><a href="#improve_the_layout">Improve the layout</a></li>
+<li><a href="#lock_it_down">Lock It Down!</a></li>
+</ul>
+</li>
+<li><a href="#deploy_to_the_cloud">Deploy to the Cloud</a></li>
+<li><a href="#jhipster_accelerating_spring_boot_angular_development">JHipster: Accelerating Spring Boot + Angular Development</a></li>
+<li><a href="#learn_more_about_jhipster">Learn More about JHipster</a></li>
+<li><a href="#source_code">Source Code</a></li>
+<li><a href="#about_the_author">About the Author</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This article shows you how to build a simple blog application with <a href="https://www.jhipster.tech/2019/06/23/jhipster-release-6.1.2.html">JHipster 6.1.2</a>. You can also <a href="https://youtu.be/uQqlO3IGpTU">watch a screencast of this tutorial on YouTube</a>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Source Code</div>
+<div class="paragraph">
+<p>If you&#8217;d like to get right to it, the <a href="https://github.com/mraible/jhipster6-demo">source code for this application is on GitHub</a>. To run the app, use <code>./mvnw</code>. To test it, run <code>./mvnw verify</code>. To run its end-to-end tests, run <code>./mvnw</code> in one terminal and <code>npm run e2e</code> in another.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="what_is_jhipster">What is JHipster?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>JHipster is one of those open-source projects you stumble upon and immediately think, &#8220;Of course!&#8221; It combines three very successful frameworks in web development: Bootstrap, Angular, and Spring Boot. Bootstrap was one of the first dominant web-component frameworks. Its most substantial appeal was that it only required a bit of HTML and it worked! All the efforts we made in the Java community to develop web components were shown a better path by Bootstrap. It leveled the playing field in HTML/CSS development, much like Apple&#8217;s Human Interface Guidelines did for iOS apps.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.julien-dubois.com/">Julien Dubois</a> started JHipster in October 2013 (Julien&#8217;s first commit was on <a href="https://github.com/jhipster/generator-jhipster/commit/c8630ab7af7b6a99db880b3b0e2403806b7d2436">October 21, 2013</a>). The first public release (version 0.3.1) launched on December 7, 2013. Since then, the project has had over 194 releases! It is an open-source, Apache 2.0-licensed project on GitHub. It has a core team of 29 developers and over 500 contributors. You can find its homepage at <a href="https://www.jhipster.tech/">www.jhipster.tech</a>. If you look at <a href="https://github.com/jhipster/generator-jhipster">the project on GitHub</a>, you can see it&#8217;s mostly written in JavaScript (36%) and Java (28%).</p>
+</div>
+<div class="paragraph">
+<p>JHipster 6 is the same JHipster many developers know and love, with a couple of bright and shiny new features: namely Java 11 and Spring Boot 2.1 support.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="install_jhipster_6">Install JHipster 6</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="http://www.jhipster.tech/installation/">Installing JHipster</a> instructions show you all the tools you&#8217;ll need to use a released version of JHipster.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Install Java 11 <a href="https://sdkman.io/">using SDKMAN!</a></p>
+</li>
+<li>
+<p>Install Git from <a href="https://git-scm.com" class="bare">https://git-scm.com</a>.</p>
+</li>
+<li>
+<p>Install Node.js from <a href="http://nodejs.org" class="bare">http://nodejs.org</a>. JHipster recommends using a LTS release.</p>
+</li>
+<li>
+<p>Run the following command to install JHipster.</p>
+<div class="literalblock">
+<div class="content">
+<pre>npm i -g generator-jhipster@6.1.2</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you&#8217;re using Yarn, run <code>yarn global add generator-jhipster@6.1.2</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="create_a_project">Create a Project</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To create a project, open a terminal window and create a directory. For example, <code>mkdir blog</code>. Navigate into the directory and run <code>jhipster</code>. You&#8217;ll be prompted to answer a number of questions about the type of application you want to create and what features you&#8217;d like to include. The screenshot below shows the choices I made to create a simple blog application with Angular.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/img/generating-blog.png" alt="Generating the application" width="800">
+</div>
+<div class="title">Figure 1. Generating the application</div>
+</div>
+<div class="paragraph">
+<p>If you&#8217;d like to create the same application I did, you can place the following <code>.yo-rc.json</code> file in an empty directory and run <code>jhipster</code> in it. You won&#8217;t be prompted to answer any questions because the answers are provided by this file.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">generator-jhipster</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">promptValues</span><span class="delimiter">&quot;</span></span>: {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">packageName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">org.jhipster.blog</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">nativeLanguage</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span>
+    },
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">jhipsterVersion</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">6.1.2</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">applicationType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">monolith</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">baseName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">blog</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">packageName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">org.jhipster.blog</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">packageFolder</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">org/jhipster/blog</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">serverPort</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">8080</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">authenticationType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">jwt</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">cacheProvider</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">ehcache</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">enableHibernateCache</span><span class="delimiter">&quot;</span></span>: <span class="value">true</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">websocket</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">databaseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">sql</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">devDatabaseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">h2Disk</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">prodDatabaseType</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">postgresql</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">searchEngine</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">messageBroker</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">serviceDiscoveryType</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">buildTool</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">maven</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">enableSwaggerCodegen</span><span class="delimiter">&quot;</span></span>: <span class="value">false</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">jwtSecretKey</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">OWFlMTQ2YjU3NjI0ODUwZmY5OTEyOWYzMDVlY2YyZjMzNDZlNjNkMzNhNTM1NjIwZDg1OTI5ODExMzA1YTdmMjAxOWM4NjEzZjhkMGNkYjQ0NWUzMGI4M2U5MzJlNDg2NDhhZWFkODZhYTI2YWQ3YWRmZWFhNzk5MGI4NzY5YTk=</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">useSass</span><span class="delimiter">&quot;</span></span>: <span class="value">true</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">clientPackageManager</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">npm</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">clientFramework</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">angularX</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">clientTheme</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">none</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">clientThemeVariant</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">testFrameworks</span><span class="delimiter">&quot;</span></span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">protractor</span><span class="delimiter">&quot;</span></span>],
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">jhiPrefix</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">jhi</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">entitySuffix</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">dtoSuffix</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">DTO</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">otherModules</span><span class="delimiter">&quot;</span></span>: [],
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">enableTranslation</span><span class="delimiter">&quot;</span></span>: <span class="value">true</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">nativeLanguage</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">languages</span><span class="delimiter">&quot;</span></span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">es</span><span class="delimiter">&quot;</span></span>]
+  }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<strong>What about React?</strong> If you&#8217;d like to see how to use JHipster to build a React app, see <a href="https://developer.okta.com/blog/2018/06/25/react-spring-boot-photo-gallery-pwa">Build a Photo Gallery PWA with React, Spring Boot, and JHipster</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The project creation process will take a couple of minutes to run, depending on your internet connection speed. When it&#8217;s finished, you should see output like the following.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/img/generation-success.png" alt="Generation success" width="800">
+</div>
+<div class="title">Figure 2. Generation success</div>
+</div>
+<div class="paragraph">
+<p>Run <code>./mvnw</code> to start the application and navigate to <a href="http://localhost:8080" class="bare">http://localhost:8080</a> in your favorite browser. The first thing you&#8217;ll notice is a hipster explaining how you can sign in or register.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/img/default-homepage.png" alt="Default homepage" width="800">
+</div>
+<div class="title">Figure 3. Default homepage</div>
+</div>
+<div class="paragraph">
+<p>Sign in with username <code>admin</code> and password <code>admin</code>, and you&#8217;ll have access to navigate through the Administration section. This section offers nice looking UIs on top of some Spring Boot&#8217;s many monitoring and configuration features. It also allows you to administer users:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/img/user-management.png" alt="User management" width="800">
+</div>
+<div class="title">Figure 4. User management</div>
+</div>
+<div class="paragraph">
+<p>It gives you insights into Application and JVM metrics:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/img/app-metrics.png" alt="Application and JVM Metrics" width="800">
+</div>
+<div class="title">Figure 5. Application metrics</div>
+</div>
+<div class="paragraph">
+<p>And it allows you to see the Swagger docs associated with its API.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/img/swagger-ui.png" alt="Swagger UI" width="800">
+</div>
+<div class="title">Figure 6. Swagger docs</div>
+</div>
+<div class="paragraph">
+<p>You can run the following command (in a separate terminal window) to run the Protractor tests and confirm everything is working correctly.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>npm run e2e</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="generate_entities">Generate Entities</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For each entity you want to create, you will need:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a database table;</p>
+</li>
+<li>
+<p>a Liquibase change set;</p>
+</li>
+<li>
+<p>a JPA entity class;</p>
+</li>
+<li>
+<p>a Spring Data <code>JpaRepository</code> interface;</p>
+</li>
+<li>
+<p>a Spring MVC <code>RestController</code> class;</p>
+</li>
+<li>
+<p>an Angular list component, edit component, service; and</p>
+</li>
+<li>
+<p>several HTML pages for each component.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Also, you should have integration tests to verify that everything works and performance tests to confirm that it runs fast. In an ideal world, you&#8217;d also have unit tests and integration tests for your Angular code.</p>
+</div>
+<div class="paragraph">
+<p>The good news is JHipster can generate all of this code for you, including integration tests and performance tests. Also, if you have entities with relationships, it will create the necessary schema to support them (with foreign keys), and the TypeScript and HTML code to manage them. You can also set up validation to require certain fields as well as control their length.</p>
+</div>
+<div class="paragraph">
+<p>JHipster supports several methods of code generation. The first uses its <a href="https://www.jhipster.tech/creating-an-entity/">entity sub-generator</a>. The entity sub-generator is a command-line tool that prompts you with questions which you answer.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://start.jhipster.tech/jdl-studio/">JDL-Studio</a> is a browser-based tool for defining your domain model with JHipster Domain Language (JDL). I like the visual nature of JDL-Studio, so I&#8217;ll use it for this project.</p>
+</div>
+<div class="paragraph">
+<p>Below is the entity diagram and JDL code needed to generate a simple blog with blogs, entries, and tags.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/img/jdl-studio.png" alt="Blog entity diagram" width="1171">
+</div>
+<div class="title">Figure 7. Blog entity diagram</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You can find a few other <a href="https://github.com/jhipster/jdl-samples">JDL samples on GitHub</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If you&#8217;d like to follow along, copy/paste the contents of the JDL below into a <code>blog.jdl</code> file.</p>
+</div>
+<div class="listingblock">
+<div class="title">blog.jh</div>
+<div class="content">
+<pre>entity Blog {
+  name String required minlength(3),
+  handle String required minlength(2)
+}
+
+entity Entry {
+  title String required,
+  content TextBlob required,
+  date Instant required
+}
+
+entity Tag {
+  name String required minlength(2)
+}
+
+relationship ManyToOne {
+  Blog{user(login)} to User,
+  Entry{blog(name)} to Blog
+}
+
+relationship ManyToMany {
+  Entry{tag(name)} to Tag{entry}
+}
+
+paginate Entry, Tag with infinite-scroll</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Run the following command to import this file and generate entities, tests, and a UI.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>jhipster import-jdl blog.jdl</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You&#8217;ll be prompted to overwrite <code>src/main/resources/config/liquibase/master.xml</code>. Type <strong>a</strong> to overwrite this file, as well as others.</p>
+</div>
+<div class="paragraph">
+<p>Restart the application with <code>/.mvnw</code>.</p>
+</div>
+<div class="paragraph">
+<p>You might notice that each entities list screen is pre-loaded with data. This is done by <a href="https://github.com/marak/Faker.js/">faker.js</a>. To turn it off, edit <code>src/main/resources/config/application-dev.yml</code>, search for <code>faker</code> and remove it from the <code>liquibase.contexts</code> configuration. I made this change in this example&#8217;s code.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">liquibase</span>:
+ <span class="comment"># Add 'faker' if you want the sample data to be loaded automatically</span>
+ <span class="key">contexts</span>: <span class="string"><span class="content">dev</span></span></code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you still have data in your list screens after making this change, run <code>./mvnw clean</code> to delete the H2 database.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Create a couple of blogs for the existing <code>admin</code> and <code>user</code> users, as well as a few blog entries.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/img/blogs.png" alt="Blogs" width="800">
+</div>
+<div class="title">Figure 8. Blogs</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/img/entries.png" alt="Entries" width="800">
+</div>
+<div class="title">Figure 9. Entries</div>
+</div>
+<div class="paragraph">
+<p>From these screenshots, you can see that users can see each other&#8217;s data, and modify it.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="add_business_logic">Add Business Logic</h2>
+<div class="sectionbody">
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+To configure an IDE with your JHipster project, see <a href="https://www.jhipster.tech/configuring-ide/">Configuring your IDE</a>. Instructions exist for Eclipse, IntelliJ IDEA, Visual Studio Code, and NetBeans.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To add more security around blogs and entries, open <code>BlogResource.java</code> and find the <code>getAllBlogs()</code> method. Change the following line:</p>
+</div>
+<div class="listingblock">
+<div class="title">src/main/java/org/jhipster/blog/web/rest/BlogResource.java</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">return</span> blogRepository.findAll();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To:</p>
+</div>
+<div class="listingblock">
+<div class="title">src/main/java/org/jhipster/blog/web/rest/BlogResource.java</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">return</span> blogRepository.findByUserIsCurrentUser();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>findByUserIsCurrentUser()</code> method is generated by JHipster in the <code>BlogRepository</code> class and allows limiting results by the current user.</p>
+</div>
+<div class="listingblock">
+<div class="title">src/main/java/org/jhipster/blog/repository/BlogRepository.java</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">interface</span> <span class="class">BlogRepository</span> <span class="directive">extends</span> JpaRepository&lt;Blog, <span class="predefined-type">Long</span>&gt; {
+
+    <span class="annotation">@Query</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">select blog from Blog blog where blog.user.login = ?#{principal.username}</span><span class="delimiter">&quot;</span></span>)
+    <span class="predefined-type">List</span>&lt;Blog&gt; findByUserIsCurrentUser();
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After making this change, re-compiling <code>BlogResource</code> should trigger a restart of the application thanks to <a href="http://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtools.html">Spring Boot&#8217;s Developer tools</a>. If you navigate to <a href="http://localhost:8080/blog" class="bare">http://localhost:8080/blog</a>, you should only see the blog for the current user.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/img/blogs-admin.png" alt="Admin&#8217;s blog" width="800">
+</div>
+<div class="title">Figure 10. Admin&#8217;s blog</div>
+</div>
+<div class="paragraph">
+<p>To add this same logic for entries, open <code>EntryResource.java</code> and find the <code>getAllEntries()</code> method. Change the following line:</p>
+</div>
+<div class="listingblock">
+<div class="title">src/main/java/org/jhipster/blog/web/rest/EntryResource.java</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">Page&lt;Entry&gt; page;
+<span class="keyword">if</span> (eagerload) {
+    page = entryRepository.findAllWithEagerRelationships(pageable);
+} <span class="keyword">else</span> {
+    page = entryRepository.findAll(pageable);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To:</p>
+</div>
+<div class="listingblock">
+<div class="title">src/main/java/org/jhipster/blog/web/rest/EntryResource.java</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">page = entryRepository.findByBlogUserLoginOrderByDateDesc(SecurityUtils.getCurrentUserLogin().orElse(<span class="predefined-constant">null</span>), pageable);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Using your IDE, create this method in the <code>EntryRepository</code> class. It should look as follows:</p>
+</div>
+<div class="listingblock">
+<div class="title">src/main/java/org/jhipster/blog/repository/EntryRepository.java</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">Page&lt;Entry&gt; findByBlogUserLoginOrderByDateDesc(<span class="predefined-type">String</span> currentUserLogin, <span class="predefined-type">Pageable</span> pageable);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Recompile both changed classes and verify that the <code>user</code> user only sees the entries you created for them.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/img/entries-user.png" alt="User&#8217;s entries" width="800">
+</div>
+<div class="title">Figure 11. User&#8217;s entries</div>
+</div>
+<div class="paragraph">
+<p>You might notice that this application doesn&#8217;t look like a blog and it doesn&#8217;t allow HTML in the content field.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="make_ui_enhancements">Make UI Enhancements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When doing UI development on a JHipster-generated application, it&#8217;s nice to see your changes as soon as you save a file. JHipster uses <a href="https://www.browsersync.io/">Browsersync</a> and <a href="https://webpack.github.io/">webpack</a> to power this feature. You enable this feature by running the following command in the <code>blog</code> directory.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>npm start</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this section, you&#8217;ll change the following:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Change the rendered content field to display HTML</p>
+</li>
+<li>
+<p>Change the list of entries to look like a blog</p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="allow_html">Allow HTML</h3>
+<div class="paragraph">
+<p>If you enter HTML in the <code>content</code> field of a blog entry, you&#8217;ll notice it&#8217;s escaped on the list screen.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/img/entries-with-html-escaped.png" alt="Escaped HTML" width="800">
+</div>
+<div class="title">Figure 12. Escaped HTML</div>
+</div>
+<div class="paragraph">
+<p>To change this behavior, open <code>entry.component.html</code> and change the following line:</p>
+</div>
+<div class="listingblock">
+<div class="title">src/main/webapp/app/entities/entry/entry.component.html</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;td&gt;</span>{{entry.content}}<span class="tag">&lt;/td&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To:</p>
+</div>
+<div class="listingblock">
+<div class="title">src/main/webapp/app/entities/entry/entry.component.html</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;td</span> <span class="error">[</span><span class="attribute-name">innerHTML</span><span class="error">]</span><span class="error">=</span><span class="error">&quot;</span><span class="attribute-name">entry.content</span><span class="error">&quot;</span><span class="tag">&gt;</span><span class="tag">&lt;/td&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After making this change, you&#8217;ll see that the HTML is no longer escaped.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/img/entries-with-html.png" alt="Escaped HTML" width="800">
+</div>
+<div class="title">Figure 13. HTML in entries</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="improve_the_layout">Improve the layout</h3>
+<div class="paragraph">
+<p>To make the list of entries look like a blog, replace <code>&lt;div class="table-responsive"&gt;</code> with HTML, so it uses a stacked layout in a single column.</p>
+</div>
+<div class="listingblock">
+<div class="title">src/main/webapp/app/entities/entry/entry.component.html</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">table-responsive</span><span class="delimiter">&quot;</span></span> <span class="error">*</span><span class="attribute-name">ngIf</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">entries?.length </span></span><span class="error">&gt;</span> 0&quot;<span class="error">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attribute-name">infinite-scroll</span> <span class="error">(</span><span class="attribute-name">scrolled</span><span class="error">)</span><span class="error">=</span><span class="error">&quot;</span><span class="attribute-name">loadPage</span><span class="error">(</span><span class="attribute-name">page</span> <span class="error">+</span> <span class="attribute-name">1</span><span class="error">)</span><span class="error">&quot;</span> <span class="error">[</span><span class="attribute-name">infiniteScrollDisabled</span><span class="error">]</span><span class="error">=</span><span class="error">&quot;</span><span class="attribute-name">page</span> <span class="tag">&gt;</span>= links['last']&quot; [infiniteScrollDistance]=&quot;0&quot;<span class="error">&gt;</span>
+        <span class="tag">&lt;div</span> <span class="error">*</span><span class="attribute-name">ngFor</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">let entry of entries; trackBy: trackId</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;a</span> <span class="error">[</span><span class="attribute-name">routerLink</span><span class="error">]</span><span class="error">=</span><span class="error">&quot;</span><span class="error">[</span><span class="error">'</span><span class="error">/</span><span class="attribute-name">entry</span><span class="error">'</span><span class="error">,</span> <span class="attribute-name">entry.id</span><span class="error">,</span> <span class="error">'</span><span class="attribute-name">view</span><span class="error">'</span> <span class="error">]</span><span class="error">&quot;</span><span class="tag">&gt;</span>
+                <span class="tag">&lt;h2&gt;</span>{{entry.title}}<span class="tag">&lt;/h2&gt;</span>
+            <span class="tag">&lt;/a&gt;</span>
+            <span class="tag">&lt;small&gt;</span>Posted on {{entry.date | date: 'short'}} by {{entry.blog.user.firstName}}<span class="tag">&lt;/small&gt;</span>
+            <span class="tag">&lt;div</span> <span class="error">[</span><span class="attribute-name">innerHTML</span><span class="error">]</span><span class="error">=</span><span class="error">&quot;</span><span class="attribute-name">entry.content</span><span class="error">&quot;</span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">btn-group mb-2 mt-1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                <span class="tag">&lt;button</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">submit</span><span class="delimiter">&quot;</span></span>
+                        <span class="error">[</span><span class="attribute-name">routerLink</span><span class="error">]</span><span class="error">=</span><span class="error">&quot;</span><span class="error">[</span><span class="error">'</span><span class="error">/</span><span class="attribute-name">entry</span><span class="error">'</span><span class="error">,</span> <span class="attribute-name">entry.id</span><span class="error">,</span> <span class="error">'</span><span class="attribute-name">edit</span><span class="error">'</span><span class="error">]</span><span class="error">&quot;</span>
+                        <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">btn btn-primary btn-sm</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                    <span class="tag">&lt;fa-icon</span> <span class="error">[</span><span class="attribute-name">icon</span><span class="error">]</span><span class="error">=</span><span class="error">&quot;</span><span class="error">'</span><span class="attribute-name">pencil-alt</span><span class="error">'</span><span class="error">&quot;</span><span class="tag">&gt;</span><span class="tag">&lt;/fa-icon&gt;</span>
+                    <span class="tag">&lt;span</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">d-none d-md-inline</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">jhiTranslate</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">entity.action.edit</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Edit<span class="tag">&lt;/span&gt;</span>
+                <span class="tag">&lt;/button&gt;</span>
+                <span class="tag">&lt;button</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">submit</span><span class="delimiter">&quot;</span></span>
+                        <span class="error">[</span><span class="attribute-name">routerLink</span><span class="error">]</span><span class="error">=</span><span class="error">&quot;</span><span class="error">[</span><span class="error">'</span><span class="error">/</span><span class="error">'</span><span class="error">,</span> <span class="error">'</span><span class="attribute-name">entry</span><span class="error">'</span><span class="error">,</span> <span class="error">{</span> <span class="attribute-name">outlets:</span> <span class="error">{</span> <span class="attribute-name">popup:</span> <span class="attribute-name">entry.id</span> <span class="error">+</span> <span class="error">'</span><span class="error">/</span><span class="attribute-name">delete</span><span class="error">'</span><span class="error">}</span> <span class="error">}</span><span class="error">]</span><span class="error">&quot;</span>
+                        <span class="attribute-name">replaceUrl</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span>
+                        <span class="attribute-name">queryParamsHandling</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">merge</span><span class="delimiter">&quot;</span></span>
+                        <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">btn btn-danger btn-sm</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                    <span class="tag">&lt;fa-icon</span> <span class="error">[</span><span class="attribute-name">icon</span><span class="error">]</span><span class="error">=</span><span class="error">&quot;</span><span class="error">'</span><span class="attribute-name">times</span><span class="error">'</span><span class="error">&quot;</span><span class="tag">&gt;</span><span class="tag">&lt;/fa-icon&gt;</span>
+                    <span class="tag">&lt;span</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">d-none d-md-inline</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">jhiTranslate</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">entity.action.delete</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Delete<span class="tag">&lt;/span&gt;</span>
+                <span class="tag">&lt;/button&gt;</span>
+            <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now it looks more like a regular blog!</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/img/blog-entries.png" alt="Blog entries" width="800">
+</div>
+<div class="title">Figure 14. Blog entries</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="lock_it_down">Lock It Down!</h3>
+<div class="paragraph">
+<p>You can further enhanced the security of your API by only allowing users that own a blog (or entry) to edit it. Here&#8217;s some sudo-code to show the logic:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">Optional&lt;Blog&gt; blog = blogRepository.findById(id);
+<span class="keyword">if</span> (blog.isPresent() &amp;&amp; &lt;user doesn<span class="string"><span class="delimiter">'</span><span class="content">t match current user&gt;) {
+    return new ResponseEntity&lt;&gt;(&quot;error.http.403&quot;, HttpStatus.FORBIDDEN);
+}
+return ResponseUtil.wrapOrNotFound(blog);</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Below is the refactored <code>BlogResource.java</code> with additional logic in each method to prevent data tampering.</p>
+</div>
+<div class="listingblock">
+<div class="title">src/main/java/org/jhipster/blog/web/rest/BlogResource.java</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@PostMapping</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">/blogs</span><span class="delimiter">&quot;</span></span>)
+<span class="directive">public</span> ResponseEntity&lt;?&gt; createBlog(<span class="annotation">@Valid</span> <span class="annotation">@RequestBody</span> Blog blog) <span class="directive">throws</span> <span class="exception">URISyntaxException</span> {
+    log.debug(<span class="string"><span class="delimiter">&quot;</span><span class="content">REST request to save Blog : {}</span><span class="delimiter">&quot;</span></span>, blog);
+    <span class="keyword">if</span> (blog.getId() != <span class="predefined-constant">null</span>) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> BadRequestAlertException(<span class="string"><span class="delimiter">&quot;</span><span class="content">A new blog cannot already have an ID</span><span class="delimiter">&quot;</span></span>, ENTITY_NAME, <span class="string"><span class="delimiter">&quot;</span><span class="content">idexists</span><span class="delimiter">&quot;</span></span>);
+    }
+    <span class="keyword">if</span> (!blog.getUser().getLogin().equals(SecurityUtils.getCurrentUserLogin().orElse(<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>))) {
+        <span class="keyword">return</span> <span class="keyword">new</span> ResponseEntity&lt;&gt;(<span class="string"><span class="delimiter">&quot;</span><span class="content">error.http.403</span><span class="delimiter">&quot;</span></span>, HttpStatus.FORBIDDEN);
+    }
+    Blog result = blogRepository.save(blog);
+    <span class="keyword">return</span> ResponseEntity.created(<span class="keyword">new</span> <span class="predefined-type">URI</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">/api/blogs/</span><span class="delimiter">&quot;</span></span> + result.getId()))
+        .headers(HeaderUtil.createEntityCreationAlert(applicationName, <span class="predefined-constant">true</span>, ENTITY_NAME, result.getId().toString()))
+        .body(result);
+}
+
+<span class="annotation">@PutMapping</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">/blogs</span><span class="delimiter">&quot;</span></span>)
+<span class="directive">public</span> ResponseEntity&lt;?&gt; updateBlog(<span class="annotation">@Valid</span> <span class="annotation">@RequestBody</span> Blog blog) <span class="directive">throws</span> <span class="exception">URISyntaxException</span> {
+    log.debug(<span class="string"><span class="delimiter">&quot;</span><span class="content">REST request to update Blog : {}</span><span class="delimiter">&quot;</span></span>, blog);
+    <span class="keyword">if</span> (blog.getId() == <span class="predefined-constant">null</span>) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> BadRequestAlertException(<span class="string"><span class="delimiter">&quot;</span><span class="content">Invalid id</span><span class="delimiter">&quot;</span></span>, ENTITY_NAME, <span class="string"><span class="delimiter">&quot;</span><span class="content">idnull</span><span class="delimiter">&quot;</span></span>);
+    }
+    <span class="keyword">if</span> (blog.getUser() != <span class="predefined-constant">null</span> &amp;&amp;
+        !blog.getUser().getLogin().equals(SecurityUtils.getCurrentUserLogin().orElse(<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>))) {
+        <span class="keyword">return</span> <span class="keyword">new</span> ResponseEntity&lt;&gt;(<span class="string"><span class="delimiter">&quot;</span><span class="content">error.http.403</span><span class="delimiter">&quot;</span></span>, HttpStatus.FORBIDDEN);
+    }
+    Blog result = blogRepository.save(blog);
+    <span class="keyword">return</span> ResponseEntity.ok()
+        .headers(HeaderUtil.createEntityUpdateAlert(applicationName, <span class="predefined-constant">true</span>, ENTITY_NAME, blog.getId().toString()))
+        .body(result);
+}
+
+<span class="annotation">@GetMapping</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">/blogs/{id}</span><span class="delimiter">&quot;</span></span>)
+<span class="directive">public</span> ResponseEntity&lt;?&gt; getBlog(<span class="annotation">@PathVariable</span> <span class="predefined-type">Long</span> id) {
+    log.debug(<span class="string"><span class="delimiter">&quot;</span><span class="content">REST request to get Blog : {}</span><span class="delimiter">&quot;</span></span>, id);
+    Optional&lt;Blog&gt; blog = blogRepository.findById(id);
+    <span class="keyword">if</span> (blog.isPresent() &amp;&amp; blog.get().getUser() != <span class="predefined-constant">null</span> &amp;&amp;
+        !blog.get().getUser().getLogin().equals(SecurityUtils.getCurrentUserLogin().orElse(<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>))) {
+        <span class="keyword">return</span> <span class="keyword">new</span> ResponseEntity&lt;&gt;(<span class="string"><span class="delimiter">&quot;</span><span class="content">error.http.403</span><span class="delimiter">&quot;</span></span>, HttpStatus.FORBIDDEN);
+    }
+    <span class="keyword">return</span> ResponseUtil.wrapOrNotFound(blog);
+}
+
+<span class="annotation">@DeleteMapping</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">/blogs/{id}</span><span class="delimiter">&quot;</span></span>)
+<span class="directive">public</span> ResponseEntity&lt;?&gt; deleteBlog(<span class="annotation">@PathVariable</span> <span class="predefined-type">Long</span> id) {
+    log.debug(<span class="string"><span class="delimiter">&quot;</span><span class="content">REST request to delete Blog : {}</span><span class="delimiter">&quot;</span></span>, id);
+    Optional&lt;Blog&gt; blog = blogRepository.findById(id);
+    <span class="keyword">if</span> (blog.isPresent() &amp;&amp; blog.get().getUser() != <span class="predefined-constant">null</span> &amp;&amp;
+        !blog.get().getUser().getLogin().equals(SecurityUtils.getCurrentUserLogin().orElse(<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>))) {
+        <span class="keyword">return</span> <span class="keyword">new</span> ResponseEntity&lt;&gt;(<span class="string"><span class="delimiter">&quot;</span><span class="content">error.http.403</span><span class="delimiter">&quot;</span></span>, HttpStatus.FORBIDDEN);
+    }
+    blogRepository.deleteById(id);
+    <span class="keyword">return</span> ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, <span class="predefined-constant">true</span>, ENTITY_NAME, id.toString())).build();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You&#8217;ll need to make similar changes in <code>EntryResource.java</code>. See <a href="https://github.com/mraible/jhipster6-demo/commit/73bd82f87274dc013a72839eda5925b5e22f4907">this commit</a> for all the changes that you&#8217;ll need in these two classes, as well as their integration tests.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="deploy_to_the_cloud">Deploy to the Cloud</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A JHipster application can be deployed anywhere a Spring Boot application can be deployed.</p>
+</div>
+<div class="paragraph">
+<p>JHipster ships with support for deploying to <a href="https://www.jhipster.tech/cloudfoundry/">Cloud Foundry</a>, <a href="https://www.jhipster.tech/heroku/">Heroku</a>, <a href="https://www.jhipster.tech/kubernetes/">Kubernetes</a>, <a href="https://www.jhipster.tech/aws/">AWS</a>, and <a href="https://www.jhipster.tech/boxfuse/">AWS with Boxfuse</a>. I&#8217;m using Heroku in this example because it doesn&#8217;t cost me anything to host it.</p>
+</div>
+<div class="paragraph">
+<p>When you prepare a JHipster application for production, it&#8217;s recommended to use the pre-configured &#8220;production&#8221; profile. With Maven, you can package your application by specifying the <code>prod</code> profile when building.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>./mvnw -Pprod verify</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The production profile is used to build an optimized JavaScript client. You can invoke this using webpack by running <code>yarn run webpack:prod</code>.
+The production profile also configures gzip compression with a servlet filter, cache headers, and monitoring via
+<a href="https://micrometer.io/">Micrometer</a>. If you have a <a href="http://graphite.wikidot.com/">Graphite</a> server configured in
+your <code>application-prod.yml</code> file, your application will automatically send metrics data to it.</p>
+</div>
+<div class="paragraph">
+<p>When you run this command, you&#8217;ll likely get a test failure.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[ERROR] Failures:
+[ERROR]   BlogResourceIT.createBlog:115 Status expected:&lt;201&gt; but was:<i class="conum" data-value="500"></i><b>(500)</b>
+[ERROR]   BlogResourceIT.getAllBlogs:189 Status expected:&lt;200&gt; but was:<i class="conum" data-value="500"></i><b>(500)</b>
+[INFO]
+[ERROR] Tests run: 144, Failures: 2, Errors: 0, Skipped: 0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The reason this happens is in a stack trace in your terminal.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>org.springframework.dao.InvalidDataAccessApiUsageException: Authentication object cannot be null</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To fix this, you can use Spring Security Test&#8217;s <a href="http://docs.spring.io/spring-security/site/docs/current/reference/html/test-method.html#test-method-withmockuser"><code>@WithMockUser</code></a>. Open <code>BlogResourceIT.java</code> and inject  <code>UserRepository</code> as a dependency.</p>
+</div>
+<div class="listingblock">
+<div class="title">src/test/java/org/jhipster/blog/web/rest/BlogResourceIT.java</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Autowired</span>
+<span class="directive">private</span> UserRepository userRepository;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Change the <code>createEntity()</code> method so it&#8217;s not <code>static</code> and uses the <code>userRepository</code> to set a user on the blog entity.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> Blog createEntity(EntityManager em) {
+    Blog blog = <span class="keyword">new</span> Blog()
+            .name(DEFAULT_NAME)
+            .handle(DEFAULT_HANDLE)
+            .user(userRepository.findOneByLogin(<span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>).get());
+    <span class="keyword">return</span> blog;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Add <code>@WithMockUser</code> to the <code>createBlog()</code>, <code>getAllBlogs()</code>, <code>getBlog()</code>, <code>updateBlog()</code> and <code>deleteBlog()</code> methods. Below is an example of how each method should look.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Test</span>
+<span class="annotation">@Transactional</span>
+<span class="annotation">@WithMockUser</span>
+<span class="directive">public</span> <span class="type">void</span> createBlog() <span class="directive">throws</span> <span class="exception">Exception</span> {
+    <span class="comment">// method body</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After fixing this test, you should be able to run <code>./mvnw -Pprod verify</code> without any failures.</p>
+</div>
+<div class="paragraph">
+<p>To deploy this application to Heroku, I logged in to my account using <code>heroku login</code> from the command line. I already had the <a href="https://devcenter.heroku.com/articles/heroku-command-line">Heroku CLI</a> installed.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ heroku login
+heroku: Press any key to open up the browser to login or q to exit:
+Opening browser to https://cli-auth.heroku.com/auth/browser/7dc2d6ea-c27c-4551-8bcd-efaf712c4413
+Logging in... done
+Logged in as matt@raibledesigns.com</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>I ran <code>jhipster heroku</code> as recommended in the <a href="http://www.jhipster.tech/heroku/">Deploying to Heroku</a> documentation. I used the name &#8220;jhipster6-demo&#8221; for my application when prompted. I selected &#8220;Git (compile on Heroku)&#8221; as the type of deployment.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ jhipster heroku
+INFO! Using JHipster version installed locally in current project's node_modules
+INFO! Executing jhipster:heroku
+INFO! Options: from-cli: true
+Heroku configuration is starting
+? Name to deploy as: jhipster6-demo
+? On which region do you want to deploy ? us
+? Which type of deployment do you want ? Git (compile on Heroku)
+
+Using existing Git repository
+
+Installing Heroku CLI deployment plugin
+
+Creating Heroku application and setting up node environment
+https://jhipster-6-demo.herokuapp.com/ | https://git.heroku.com/jhipster-6-demo.git
+
+Provisioning addons
+Created Database addon
+
+Creating Heroku deployment files
+   create Procfile
+ conflict pom.xml
+? Overwrite pom.xml? overwrite this and all others
+    force pom.xml
+   create src/main/resources/config/bootstrap-heroku.yml
+   create src/main/resources/config/application-heroku.yml
+
+Skipping build
+
+Updating Git repository
+git add .
+git commit -m "Deploy to Heroku" --allow-empty
+husky &gt; pre-commit (node v10.15.3)
+Stashing changes... [started]
+Stashing changes... [skipped]
+→ No partially staged files found...
+Running linters... [started]
+Running tasks for {,src/**/}*.{md,json,ts,css,scss,yml} [started]
+prettier --write [started]
+prettier --write [completed]
+git add [started]
+git add [completed]
+Running tasks for {,src/**/}*.{md,json,ts,css,scss,yml} [completed]
+Running linters... [completed]
+
+Configuring Heroku
+
+Deploying application
+remote: Compressing source files... done.
+remote: Building source:
+
+... building ...
+
+remote: [INFO] ------------------------------------------------------------------------
+remote: [INFO] BUILD SUCCESS
+remote: [INFO] ------------------------------------------------------------------------
+remote: [INFO] Total time:  20.354 s
+remote: [INFO] Finished at: 2019-06-24T03:11:53Z
+remote: [INFO] ------------------------------------------------------------------------
+To https://git.heroku.com/jhipster-6-demo.git
+ * [new branch]      HEAD -&gt; master
+
+Your app should now be live. To view it run
+	heroku open
+And you can view the logs with this command
+	heroku logs --tail
+After application modification, redeploy it with
+	jhipster heroku
+INFO! Congratulations, JHipster execution is complete!
+Execution time: 8 min. 33 s.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>I ran <code>heroku open</code>, logged as <code>admin</code> and was pleased to see it worked!</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/img/jhipster6-demo-heroku.png" alt="JHipster 6 Demo on Heroku" width="800">
+</div>
+<div class="title">Figure 15. JHipster 6 Demo on Heroku</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="jhipster_accelerating_spring_boot_angular_development">JHipster: Accelerating Spring Boot + Angular Development</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I hope you&#8217;ve enjoyed learning how JHipster can help you develop modern web applications! It&#8217;s a nifty project, with an easy-to-use entity generator, a pretty UI, and many Spring Boot best-practice patterns. The project team follows five simple <a href="https://www.jhipster.tech/policies/">policies</a>, paraphrased here:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The development team votes on policies.</p>
+</li>
+<li>
+<p>JHipster uses technologies with their default configurations as much as possible.</p>
+</li>
+<li>
+<p>Only add options when there is sufficient added value in the generated code.</p>
+</li>
+<li>
+<p>For the Java code, follow the default IntelliJ IDEA formatting and coding guidelines.</p>
+</li>
+<li>
+<p>Use strict versions for third-party libraries.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>These policies help the project maintain its sharp edge and streamline its development process. If you have features you&#8217;d like to add or if you&#8217;d like to refine existing features, you can <a href="https://github.com/jhipster/generator-jhipster">watch the project on GitHub</a> and <a href="https://github.com/jhipster/generator-jhipster/blob/master/CONTRIBUTING.md">help with its development</a> and support. We&#8217;re always looking for help!</p>
+</div>
+<div class="paragraph">
+<p>Now that you&#8217;ve learned how to use Angular, Bootstrap 4, and Spring Boot with JHipster, go forth and develop great applications!</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Developing microservices with JHipster is possible too! See <a href="https://developer.okta.com/blog/2019/05/23/java-microservices-spring-cloud-config">Java Microservices with Spring Cloud Config and JHipster</a> to learn how. You can also <a href="http://www.jhipster-book.com/#!/news/entry/pluralsight-developing-microservices-and-mobile-apps-with-jhipster-play-by-play">watch my Pluralsight Play by Play on Developing Microservices and Mobile Apps with JHipster</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="learn_more_about_jhipster">Learn More about JHipster</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To learn more about JHipster and all it has to offer, look no further than <a href="https://www.amazon.com/Stack-Development-JHipster-Deepu-Sasidharan/dp/178847631X">Full Stack Development with JHipster</a> by <a href="https://twitter.com/deepu105">Deepu K Sasidharan</a> and <a href="https://twitter.com/sendilkumarn">Sendil Kumar</a>. Both Deepu and Sendil have contributed an incredible amount of time and code to JHipster. We&#8217;ve very luck to have them. They&#8217;re both amazing developers! ❤️</p>
+</div>
+<div class="paragraph">
+<p>JHipster&#8217;s awesome community has starred in some excellent online training videos too:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://therealdanvega.teachable.com/p/jhipster/?product_id=456739&amp;coupon_code=JHIPSTER">Angular 4 Java Developers by Dan Vega and John Thompson</a></p>
+</li>
+<li>
+<p><a href="https://www.pluralsight.com/courses/scaffolding-spring-boot-and-angular-with-jhipster">Scaffolding Spring Boot and Angular Web Apps with JHipster by Michael Hoffman</a></p>
+</li>
+<li>
+<p><a href="https://linkedin-learning.pxf.io/c/1252615/449670/8005?u=https%3A%2F%2Fwww.linkedin.com%2Flearning%2Fjhipster-build-and-deploy-spring-boot-microservices%3Ftrk%3Dinsiders_43129714_learning">JHipster: Build and Deploy Spring Boot Microservices by Chris Anatalio</a></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you&#8217;d like to see a tutorial that&#8217;s similar to this one and uses OIDC for authentication, see <a href="https://developer.okta.com/blog/2019/04/04/java-11-java-12-jhipster-oidc">Better, Faster, Lighter Java with Java 12 and JHipster 6</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Follow <a href="https://twitter.com/java_hipster">@java_hipster</a> on Twitter for release announcements, articles, new features, and upcoming talks.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="source_code">Source Code</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The source code for this project is available on GitHub at <a href="https://github.com/mraible/jhipster6-demo">mraible/jhipster6-demo</a>.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://travis-ci.org">Travis CI</a> is continually testing this project with configuration from its <a href="https://github.com/mraible/jhipster6-demo/blob/master/.travis.yml"><code>.travis.yml</code></a> file. This file was generated using <code>jhipster ci-cd</code> and everything <a href="https://github.com/mraible/jhipster6-demo/pull/1">passed on the first try</a>!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="about_the_author">About the Author</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Matt Raible</strong> is a web developer, Java Champion, and Developer Advocate at <a href="https://developer.okta.com">Okta</a>. Matt is a frequent contributor to open source and a big fan of Java, IntelliJ, TypeScript, Angular, and Spring Boot. When he&#8217;s not slinging code with open source frameworks, he likes to ski with his family, restore classic VWs, and enjoy craft beer.</p>
+</div>
+<div class="paragraph">
+<p>Matt writes on the <a href="http://developer.okta.com/blog">Okta developer blog</a>, for <a href="https://www.infoq.com/profile/Matt-Raible/">InfoQ</a>, and on his <a href="https://raibledesigns.com/">personal blog</a>. You can find him on Twitter <a href="https://twitter.com/mraible">@mraible</a>.</p>
+</div>
+<div class="paragraph">
+<p>Matt is a developer on the <a href="https://www.jhipster.tech/team/">JHipster team</a>, authored the <a href="https://www.infoq.com/minibooks/jhipster-mini-book">JHipster Mini-Book</a>, and helped create <a href="https://www.pluralsight.com/courses/play-by-play-developing-microservices-mobile-apps-jhipster">Play by Play: Developing Microservices and Mobile Apps with JHipster</a>.</p>
+</div>
+</div>
+</div>
+
+    </div>
+
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+
+    <aside class="large-3 columns">
+
+        <h4>Posts</h4>
+        <ul id="posts" class="posts nav">
+            
+            <li><a href="/2020/02/15/simplified.html">简化版</a></li>
+            
+            <li><a href="/2020/02/14/detailed.html">详细版</a></li>
+            
+        </ul>
+
+        <!-- <div class="panel">
+            <h5>Featured</h5>
+
+            <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon
+                nulla pork belly cupidatat meatloaf cow.</p>
+        </div> -->
+
+    </aside>
+
+    <!-- End Sidebar -->
+</div>
+
+<!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+
+<footer class="row">
+    <div class="large-12 columns">
+        <hr>
+        <div class="row">
+            <div class="large-12 columns">
+                <p>学习JHipster</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/js/vendor/jquery.js"></script>
+<script src="/js/foundation.min.js"></script>
+<script>
+$(document).foundation();
+var doc = document.documentElement;
+doc.setAttribute('data-useragent', navigator.userAgent);
+</script>
+</body>
+</html>

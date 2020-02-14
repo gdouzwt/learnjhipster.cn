@@ -1,0 +1,266 @@
+<!doctype html>
+<!--[if IE 9]>
+<html class="lt-ie10" lang="en"> <![endif]-->
+<html class="no-js" lang="en" data-useragent="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简化版</title>
+    <meta name="description" content="">
+    <meta name="author" content="Your name goes here">
+    <meta name="copyright" content="Maybe consider a Creative Commons license">
+    <link rel="stylesheet" href="/css/foundation.css">
+    <link rel="stylesheet" href="/css/font-awesome.css">
+    <link rel="stylesheet" href="/css/coderay.css">
+    <link rel="stylesheet" href="/css/asciidoctor.css">
+    <script src="/js/vendor/modernizr.js"></script>
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/toc.js"></script>
+</head>
+<body>
+
+
+<!-- Nav Bar -->
+
+<nav class="top-bar" data-topbar>
+    <ul class="title-area">
+        <!-- Title Area -->
+        <li class="name">
+            <h1>
+                <a href="/">学习JHipster</a>
+            </h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns" role="content">
+
+        <div class="sect1">
+<h2 id="jhipster_6_demo_steps">JHipster 6 Demo Steps</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The brackets at the end of each step indicate the alias&#8217;s or IntelliJ Live Templates to use. You can find the template definitions at <a href="https://github.com/mraible/idea-live-templates">mraible/idea-live-templates</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="create_jhipster_project">Create JHipster Project</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a <code>blog</code> directory and create a JHipster app in it</p>
+<div class="literalblock">
+<div class="content">
+<pre>name: blog
+package: org.jhipster.blog
+authenticationType: JWT
+prodDatabaseType: PostgreSQL
+languages: en,es
+testFrameworks: Protractor</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Start app using <code>./mvnw</code>, browse through admin features</p>
+</li>
+<li>
+<p>Confirm everything works by running Protractor</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="generate_entities">Generate Entities</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Import Blog JDL from <a href="https://start.jhipster.tech">start.jhipster.tech</a></p>
+<div class="literalblock">
+<div class="content">
+<pre>jhipster import-jdl blog.jdl</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Restart application and show pre-loaded data</p>
+</li>
+<li>
+<p>Turn off faker in <code>application-dev.yml</code> and run <code>./mvnw clean</code></p>
+</li>
+<li>
+<p>Create a couple of blogs and entries for <code>admin</code> and <code>user</code></p>
+</li>
+<li>
+<p>Show how <code>admin</code> and <code>user</code> share data</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="add_business_logic">Add Business Logic</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Edit <code>BlogResource.java</code> and change <code>getAllBlogs()</code> method</p>
+<div class="literalblock">
+<div class="content">
+<pre>return blogRepository.findByUserIsCurrentUser()</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Show how blog list screen limits data to current user</p>
+</li>
+<li>
+<p>Edit <code>EntryResource.java</code> and change <code>getAllEntries()</code> [<code>jh-findBy</code>]</p>
+<div class="literalblock">
+<div class="content">
+<pre>page = entryRepository.findByBlogUserLoginOrderByDateDesc(SecurityUtils.getCurrentUserLogin().orElse(null), pageable);</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Using your IDE, create this method in <code>EntryRepository</code></p>
+</li>
+<li>
+<p>Recompile both classes and verify entries are limited to current user</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="make_ui_enhancements">Make UI Enhancements</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Allow HTML in entries with <code>[innerHTML]="entry.content"</code></p>
+</li>
+<li>
+<p>Improve entry layout to look like a blog [<code>jh-entries</code>]</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="lock_it_down">Lock it down!</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add logic to <code>BlogResource#getBlog</code> to make sure user owns blog [<code>jh-get</code>]</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deploy_to_the_cloud">Deploy to the Cloud</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Build for production</p>
+<div class="literalblock">
+<div class="content">
+<pre>./mvnw -Pprod verify</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Fix test failures with <code>@WithMockUser</code> and by setting a <code>User</code> on a blog by default</p>
+<div class="literalblock">
+<div class="content">
+<pre>@Autowired
+private UserRepository userRepository;</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>public Blog createEntity(EntityManager em) {
+    Blog blog = new Blog()
+            .name(DEFAULT_NAME)
+            .handle(DEFAULT_HANDLE)
+            .user(userRepository.findOneByLogin("user").get());
+    return blog;
+}</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Run build again</p>
+</li>
+<li>
+<p>Login to Heroku using <code>heroku login</code></p>
+</li>
+<li>
+<p>Run <code>jhipster heroku</code></p>
+</li>
+<li>
+<p>When process completes, run <code>heroku open</code></p>
+</li>
+<li>
+<p>Fini!</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+    </div>
+
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+
+    <aside class="large-3 columns">
+
+        <h4>Posts</h4>
+        <ul id="posts" class="posts nav">
+            
+            <li><a href="/2020/02/15/simplified.html">简化版</a></li>
+            
+            <li><a href="/2020/02/14/detailed.html">详细版</a></li>
+            
+        </ul>
+
+        <!-- <div class="panel">
+            <h5>Featured</h5>
+
+            <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon
+                nulla pork belly cupidatat meatloaf cow.</p>
+        </div> -->
+
+    </aside>
+
+    <!-- End Sidebar -->
+</div>
+
+<!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+
+<footer class="row">
+    <div class="large-12 columns">
+        <hr>
+        <div class="row">
+            <div class="large-12 columns">
+                <p>学习JHipster</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/js/vendor/jquery.js"></script>
+<script src="/js/foundation.min.js"></script>
+<script>
+$(document).foundation();
+var doc = document.documentElement;
+doc.setAttribute('data-useragent', navigator.userAgent);
+</script>
+</body>
+</html>
