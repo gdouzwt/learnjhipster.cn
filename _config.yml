@@ -1,5 +1,7 @@
 title: 学习JHipster
 description: 
+url: "https://learnjhipster.cn"
+baseurl: "/"
 
 future: true
 whitelist:
@@ -23,3 +25,4 @@ asciidoctor:
     - idseparator=_
     - source-highlighter=coderay
     - icons=font
+    - imagesdir=/img

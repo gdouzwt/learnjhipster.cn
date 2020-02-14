@@ -1,18 +1,18 @@
 language: ruby
 rvm:
-  - 2.6.3
+- 2.6.3
 env:
   global:
-    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
-    - secure: D0RrVHHBEEJMyJK9OUUPM6Wms+D+zifJhHFl4BcmC0leSR0vANoQ6357Bl4miZL2flmnBU/1Z9WNzcDVM0JwQpF8ZVeEdMvgBY5+73Xjp8cIwYfWx8MAUB8J1Hug2aEiXw6KoSxjFOnUpSRnhCcWpviFNCZOa5XavMfe7+OHbNQT1U1xu+ZOmDG6Hrm3CMhfzu2cRPIfziAAgnWVfgtqA0STXnY9D0HvfsKPl6khy6VWkeF09Chqo/XVO/SV5LSgplkgXh1OzS6ITwT99UWDRqIeXYAvMJFyrHkzdxNgtAddYVxmx8WQqfqUFQ6A3HSnJy2Fq04H3gLszQxrVPzw8fNeOzBe7hIviaZdgRsglc26NO13EX//e4DA1ImiYKciFGvDNDBrqtv8u3XAG+8jVe/dLwKbBXnvi64udh2/H/lTBfWQ3eV08/R6m0m4aF8jbv0oBuXReyXuEy9D6xNm+yceekWzKAmTYPFb9W5XLveIgt8SIQO9P6tGuMWV6w7KRhgbpgI886ZeSVS3WcAGIr11SvSNa+x5WapOd/mizHrA8VvW4v8GjmYYwTOsmiLuYl2t1fWY76yYOOdSDLC9XhJN/mS3qxxX7WR4KCJgpstyzTVXj+uyuzi23sV1SdUvO35r3VkZk11ad9Qmp9WLXpdSQfMAKbu/lC7C9HfrGuM=
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+  - secure: kv9qQjLbJqb8TwqSakJpaqChR/zv8jZ7KMMmcmqnxK2rSdce+zATx+pa7Nr/T8H9oAVlQZAzseNUwNc/7WHMwIi96LMC8gOfY5A7LD6s0DVNJVa33cVA4TRYWePtfH7WJdc90RW0e8H3GAt79+tdGpJA3fOQXgXsZXTThM5ZPEHIVPuMm76hHUsXMmDRQBjQJqrOnz5HtxUNidw7xvMrwi58GKSP1CdTF+rUWQWGZjOiznkM2ijIq6ehHm7JXubiFDZwrSp81Ns7lUTeGEZqc8JwvK1oVGMOokL7wi56EFiBHiB72aCUlPkNPAphc8L3mk/SDTT8tiPfli7i5KZ8ps7ID1eGjCR57sBHbgNqmDY1FhIKOQFS5edwYWu+ndkNZM44kM1wNolAQIhPxRxb+2urNnz6eMmhZfLLMUSD+GHXvDpnvzsAnlKhsiPW0EYFTNHBZ4d2E9fWG/5aYsXJ3GyDFkqds3YJ+r1/n4wQ8UvevS7byDiww2ciRfMs7eMocrZPDG77EYoDNpNvFO1ZQAyeQPflqmQGPEgRtD9KGoSB/NS/b92+D1Ue8xkCtnZS4EoNev19wccVAz5T3SBktUA2mMI1y22d7+Q8ZuAH5JWQh1QsCQK4jbwU8oniqC+E/Hj4ANlMzgP/qV7D/5h3eX0OwPycCax+SYZq0t2n2m0=
 cache:
   bundler: true
   directories:
-    - /home/travis/.rvm/
+  - "/home/travis/.rvm/"
 install:
-  - gem install bundler
-  - bundle install
+- gem install bundler
+- bundle install
 script:
-  - bundle exec rake deploy
+- bundle exec rake deploy
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+- bash <(curl -s https://codecov.io/bash)

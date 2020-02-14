@@ -7,8 +7,10 @@
 :keywords: JHipster, Angular, Spring Boot, Bootstrap 4, JHipster 6, Angular 7, Angular 8
 :icons: font
 :lang: en
+:title: 详细版
 :language: javadocript
 :sourcedir: .
+:layout: default
 ifndef::env-github[]
 :icons: font
 endif::[]
